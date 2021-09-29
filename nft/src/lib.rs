@@ -57,8 +57,8 @@ impl Contract {
             owner_id,
             NFTContractMetadata {
                 spec: NFT_METADATA_SPEC.to_string(),
-                name: "Example NEAR non-fungible token".to_string(),
-                symbol: "EXAMPLE".to_string(),
+                name: "Tokens de prueba comunistas".to_string(),
+                symbol: "El comunismo funciona".to_string(),
                 icon: Some(DATA_IMAGE_SVG_NEAR_ICON.to_string()),
                 base_uri: None,
                 reference: None,
@@ -69,7 +69,7 @@ impl Contract {
 
     #[init]
     pub fn new(owner_id: ValidAccountId, metadata: NFTContractMetadata) -> Self {
-        assert!(!env::state_exists(), "Already initialized");
+        assert!(!env::state_exists(), "Ya inicializado");
         metadata.assert_valid();
         Self {
             tokens: NonFungibleToken::new(
@@ -158,7 +158,7 @@ mod tests {
     }
 
     #[test]
-    #[should_panic(expected = "The contract is not initialized")]
+    #[should_panic(expected = "El contrato no está inicializado")]
     fn test_default() {
         let context = get_context(accounts(1));
         testing_env!(context.build());
